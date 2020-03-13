@@ -1,17 +1,32 @@
 public class Exercicio2
 {
     public static void main(String arg []){
-        double m1 = 4.50, m2 = 1.00;
-        double resul = alc/gas;
+        double cambio = 5.00;
+        double reais = 30.00;
+        double desconto;
+        double dollar;
         
-        System.out.println("");
-        if(resul > 0.7){
-            System.out.println("A gasolina é mais supimpa");
-            
+        if(reais >= 100 && reais < 1000){
+            desconto = (cambio*5)/100;
+            cambio = cambio - desconto;
+            dollar = reais/cambio;
+            System.out.println(dollar);
         }
-        else{
-            System.out.println("O alcool is the bichao");
+        
+        else if (reais >= 1000){
+            desconto = (cambio*10)/100;
+            cambio = cambio - desconto;
+            dollar = reais/cambio;
+            System.out.println(dollar);
         }
+        
+        else {
+            dollar = reais/cambio;
+            System.out.println(dollar);
+        }
+        
+        
+        
         
     }
 }
