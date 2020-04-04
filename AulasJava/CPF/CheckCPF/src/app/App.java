@@ -3,15 +3,16 @@ package app;
 public class App {
     public static void main(final String[] args) {
         
-        Cpf cpf = new Cpf();
+        Pessoa p = new Pessoa();
+        p.nome = "João Silva";
+        p.idade = 36;
+        p.cpf_digitado = "48209477889"; //digitar o CPF sem pontos e hifen
 
-        cpf.cpf_digitado = "00000000000"; //digitar o CPF sem pontos e hifen
-
-        if(cpf.validade(cpf.cpf_digitado)){
-            System.out.println("CPF VALIDO!");
+        if(p.validade(p.cpf_digitado)){
+            System.out.println("Senhor(a): " + p.nome + " \nIdade: " + p.idade + " \nTem seu CPF valido!");
         }
         else{
-            System.out.println("CPF INVALIDO!");
+            System.out.println("Senhor(a): " + p.nome + " \nIdade: " + p.idade + " \nTem seu CPF invalido!");
         }
 
        
