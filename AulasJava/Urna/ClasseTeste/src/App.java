@@ -1,5 +1,3 @@
-import javax.swing.plaf.synth.Region;
-
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -13,7 +11,7 @@ public class App {
         Urna u = new Urna();
 //#endregion
         
-//#region Definindo propriedades
+//#region Definindo propriedades de Eleitores e Candidatos
         c1.SetNome("Michael Obama");
         c1.setNumeroCandidatura(123456);
         c1.setCargo(Cargo.Presidente);
@@ -27,13 +25,16 @@ public class App {
         c3.setCargo(Cargo.Senador);
 
         e1.SetNome("Matheus");
-        e1.SetNumeroEleitor(123546789);
+        e1.SetNumeroEleitor(123);
 
         e2.SetNome("Josevalda");
         e2.SetNumeroEleitor(255);
 
         e2.SetNome("Marivalda");
         e2.SetNumeroEleitor(369);
+
+        e3.SetNome("Tulio");
+        e3.SetNumeroEleitor(897);
 //#endregion
 
 //#region Adicionando Candidatos
@@ -45,17 +46,22 @@ public class App {
 
 //#region Votações
         //Caso Alguém for votar mais de uma vez, não funciona.
-        u.AddNovoVoto(c1, c1); //Candidato 1 votando nele mesmo
+        //c1 = Presidente, c2 = Deputado, c3 = Senador
+        u.AddNovoVotoPresidente(c1, c1); //Candidato votando nele mesmo
+        u.AddNovoVotoDeputado(c1, c2); //Candidato c1(Presidente) votando no deputado c2
+        u.AddNovoVotoSenador(c1, c1); //Forçando um erro de voto em senador indexistente
+        u.AddNovoVotoSenador(c1, c3); //c1(Presidente) votando no senador c3
 
-        u.AddNovoVoto(c1, c2); //
-        u.AddNovoVoto(c2, c3);
-        u.AddNovoVoto(c3, c3);
-        u.AddNovoVoto(e, c1); 
+        u.AddNovoVotoPresidente(e1, c1); //e1 votando para presidente c1
+        u.AddNovoVotoPresidente(e1, c1); //forçando erro
+        u.AddNovoVotoDeputado(e1, c2); // e1 votando no deputado c2
+        u.AddNovoVotoSenador(e1, c3); //e1 votando no senador 
+
 //#endregion
 
-        System.out.println(u.QtdVotoPorCargo(Cargo.Senador));
-
-        System.out.println(u.QtdVotosCandidato(c1));
+        System.out.println(u.QtdVotoPorCargo(Cargo.Presidente));
+        System.out.println(u.QtdVotosCandidato(c3));
+        System.out.println(u.QtdTotalVotos());
 
 
 

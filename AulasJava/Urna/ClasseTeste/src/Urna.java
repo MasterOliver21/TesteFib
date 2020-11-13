@@ -11,8 +11,11 @@ public class Urna {
     public void AddNovoCandidato(Candidato candidato){
         this.Candidatos.add(candidato);
     }
-    public Boolean AddNovoVoto(Eleitor eleitor, Candidato candidato){
+
+    public Boolean AddNovoVotoPresidente(Eleitor eleitor, Candidato candidato){
         Boolean encontrado = false;
+        if(candidato.getCargo() == Cargo.Presidente){
+
         for(int i =0; i < this.Candidatos.size(); i++ ){
             if(candidato.getNumeroCadidatura() == this.Candidatos.get(i).getNumeroCadidatura()){
                 encontrado = true;
@@ -20,14 +23,63 @@ public class Urna {
             }
             encontrado = false;
         }
-        if(encontrado && eleitor.GetVoto() == false){
-            eleitor.SetVoto(true);
+        if(encontrado && eleitor.GetVotoPresidente() == false){
+            eleitor.SetVotoPresidente(true);
             candidato.setAdicionarVoto(true);
             return true;
         }
         else
             return false;
     }
+    else
+        return false;
+}
+
+    public Boolean AddNovoVotoSenador(Eleitor eleitor, Candidato candidato){
+        Boolean encontrado = false;
+        if(candidato.getCargo() == Cargo.Senador){
+
+        for(int i =0; i < this.Candidatos.size(); i++ ){
+            if(candidato.getNumeroCadidatura() == this.Candidatos.get(i).getNumeroCadidatura()){
+                encontrado = true;
+                break;
+            }
+            encontrado = false;
+        }
+        if(encontrado && eleitor.GetVotoSenador() == false){
+            eleitor.SetVotoSenador(true);
+            candidato.setAdicionarVoto(true);
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
+
+    public Boolean AddNovoVotoDeputado(Eleitor eleitor, Candidato candidato){
+        Boolean encontrado = false;
+        if(candidato.getCargo() == Cargo.Deputado){
+
+        for(int i =0; i < this.Candidatos.size(); i++ ){
+            if(candidato.getNumeroCadidatura() == this.Candidatos.get(i).getNumeroCadidatura()){
+                encontrado = true;
+                break;
+            }
+            encontrado = false;
+        }
+        if(encontrado && eleitor.GetVotoDeputado() == false){
+            eleitor.SetVotoDeputado(true);
+            candidato.setAdicionarVoto(true);
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return false;
+}
 
     public int QtdTotalVotos(){
         int total = 0;
