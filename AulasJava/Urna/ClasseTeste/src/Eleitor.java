@@ -3,9 +3,8 @@ public class Eleitor extends Pessoa{
     private Boolean voto;
 
     public Eleitor(){
-
+        this.voto = false;
     }
-
     public int GetNumeroTituloEleitor(){
         return this.numeroTituloDeEleitor;
     }
